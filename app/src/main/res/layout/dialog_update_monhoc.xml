@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <EditText
+        android:id="@+id/edtudtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Put Title"
+        />
+
+    <EditText
+        android:id="@+id/edtudcontent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Put Content"
+        />
+
+    <EditText
+        android:id="@+id/edtuddate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Put Date"
+        />
+    <EditText
+        android:id="@+id/edtudtype"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Put Type"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        >
+
+        <Button
+            android:id="@+id/btnoke"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oke"
+            />
+
+        <Button
+            android:id="@+id/btncancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            />
+
+    </LinearLayout>
+</LinearLayout>
