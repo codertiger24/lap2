@@ -1,7 +1,8 @@
 package com.example.lap2try.Adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
-import android.graphics.Paint;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,8 +57,37 @@ public class MonhocAdapter extends RecyclerView.Adapter<MonhocAdapter.MonHocView
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)context).delete(position);
+                Monhoc id = marraylist.get(holder.getAdapterPosition());
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Delete information");
+                builder.setIcon(R.drawable.warning);
+                builder.setMessage("Are you sure?");
+                builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        boolean check = monhocDAO.deleteMonhoc(id);
+                        if(check){
+                            Toast.makeText(context.getApplicationContext(), "Delete successful", Toast.LENGTH_SHORT).show();
+                            marraylist.clear();
+                            marraylist = monhocDAO.getMonhoc();
+                            notifyItemRemoved(holder.getAdapterPosition());
+                        }else {
+                            Toast.makeText(context.getApplicationContext(), "Delete fail", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
+
         });
 
         holder.cbCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -101,7 +131,8 @@ public class MonhocAdapter extends RecyclerView.Adapter<MonhocAdapter.MonHocView
         holder.imgUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)context).update(position);
+                ((MainActivity)context).update(position, context);
+
             }
         });
     }

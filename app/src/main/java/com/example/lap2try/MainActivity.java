@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +20,7 @@ import com.example.lap2try.Model.Monhoc;
 
 import java.util.ArrayList;
 
-//import fpoly.hieuttph56046.lab2hieuttph56046.Adapter.MonhocAdapter;
-//import fpoly.hieuttph56046.lab2hieuttph56046.DAO.MonhocDAO;
-//import fpoly.hieuttph56046.lab2hieuttph56046.Model.Monhoc;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,6 +72,24 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        edtType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] arrType = {"Hard","Medium","Easy"};
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Please choose level");
+                builder.setIcon(R.drawable.warning);
+                builder.setItems(arrType, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        edtType.setText(arrType[which]);
+
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
     }
 
     private void loadData(){
@@ -80,18 +98,14 @@ public class MainActivity extends AppCompatActivity {
             arraymonhoc.add(monhoc);
         }
     }
-    public void delete(int index){
-        monhocDAO.deleteMonhoc(arraymonhoc.get(index));
-        arraymonhoc.remove(index);
-        adapter.notifyDataSetChanged();
-        Toast.makeText(this, "Xóa Thành Công", Toast.LENGTH_SHORT).show();
-    }
 
-    public void update(int index){
+
+    public void update(int index, Context context){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_update_monhoc,null);
-        alert.setTitle("Sửa");
+        alert.setIcon(R.drawable.info);
+        alert.setTitle("CẬP NHẬT");
         alert.setView(view);
 
         EditText udtitle = view.findViewById(R.id.edtudtitle);
@@ -105,6 +119,24 @@ public class MainActivity extends AppCompatActivity {
         udcontent.setText(arraymonhoc.get(index).getContent());
         uddate.setText(arraymonhoc.get(index).getDate());
         udtype.setText(arraymonhoc.get(index).getType());
+        udtype.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] arrType = {"Hard","Medium","Easy"};
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Please choose level");
+                builder.setIcon(R.drawable.warning);
+                builder.setItems(arrType, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        edtType.setText(arrType[which]);
+
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
 
         AlertDialog alertDialog = alert.create();
         alertDialog.show();

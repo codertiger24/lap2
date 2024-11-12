@@ -3,7 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:layout_margin="8dp"
     >
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Title:"
+    android:textSize="20sp"
+    />
 
     <EditText
         android:id="@+id/edtudtitle"
@@ -11,25 +18,45 @@
         android:layout_height="wrap_content"
         android:hint="Put Title"
         />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Content:"
+        android:textSize="20sp"
+        />
     <EditText
         android:id="@+id/edtudcontent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Put Content"
         />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date:"
+        android:textSize="20sp"
+        />
     <EditText
         android:id="@+id/edtuddate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Put Date"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type:"
+        android:textSize="20sp"
+        />
     <EditText
         android:id="@+id/edtudtype"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Put Type"
+        android:inputType="none"
+        android:clickable="false"
+        android:focusable="false"
+        android:cursorVisible="false"
         />
 
     <LinearLayout
@@ -37,20 +64,27 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_horizontal"
+
         >
 
         <Button
             android:id="@+id/btnoke"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Oke"
+            android:layout_weight="1"
+            android:backgroundTint="#FFC107"
+            android:text="UPDATE"
+            android:textColor="@android:color/black"
             />
 
         <Button
             android:id="@+id/btncancel"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Cancel"
+            android:layout_weight="1"
+            android:backgroundTint="#F44336"
+            android:text="CANCEL"
+            android:textColor="@android:color/white"
             />
 
     </LinearLayout>

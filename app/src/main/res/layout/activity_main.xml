@@ -89,6 +89,10 @@
             android:textStyle="bold"
             android:textSize="15sp"
             android:hint="Type"
+            android:inputType="none"
+            android:clickable="false"
+            android:focusable="false"
+            android:cursorVisible="false"
             />
 
     </LinearLayout>
